@@ -9,7 +9,7 @@
                     <div class="col">
                         <div class="site-logo-wrap">
                             <div class="site-logo">
-                                <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
+                                <a href="{{ route('index') }}"><img src="{{ asset('img/logo.png') }}" alt="Logo"></a>
                             </div>
                             <div class="get-support clearfix d-none">
                                 <div class="get-support-icon">
@@ -28,7 +28,7 @@
                                 <div class="ltn__main-menu">
                                     <ul>
                                         <li class="menu-icon"><a href="/">INICIO</a></li>
-                                        <li class="menu-icon"><a href="formacion">FORMACIÓN</a></li>
+                                        <li class="menu-icon"><a href="{{ route('formacion') }}">FORMACIÓN</a></li>
                                         <li class="menu-icon"><a href="/#ser">SERVICIOS</a></li>
                                         <li class="menu-icon"><a href="/#nos">NOSOTROS</a></li>
                                         <li class="menu-icon"><a href="/#con">CONTACTO</a></li>
@@ -64,17 +64,17 @@
         <div class="ltn__utilize-menu-inner ltn__scrollbar">
             <div class="ltn__utilize-menu-head">
                 <div class="site-logo">
-                    <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
+                    <a href="{{ route('index') }}"><img src="img/logo.png" alt="Logo"></a>
                 </div>
                 <button class="ltn__utilize-close">×</button>
             </div>
             <div class="ltn__utilize-menu">
 				 <ul>
-                      <li><a href="index.html">INICIO</a></li>
-                      <li><a href="formacion.html">FORMACIÓN</a></li>
-                      <li><a href="#ser">SERVICIOS</a></li>
-                      <li><a href="#nos">NOSOTROS</a></li>
-                      <li><a href="#con">CONTACTO</a></li>
+                      <li><a href="{{ route('index') }}">INICIO</a></li>
+                      <li><a href="{{ route('formacion') }}">FORMACIÓN</a></li>
+                      <li><a href="/#ser">SERVICIOS</a></li>
+                      <li><a href="/#nos">NOSOTROS</a></li>
+                      <li><a href="/#con">CONTACTO</a></li>
                     </ul>
             </div>
         </div>

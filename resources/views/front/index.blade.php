@@ -387,6 +387,15 @@ continua</h1>
     <div class="ltn__contact-message-area  mb-0" style="background-color: #F3F1EC !important">
         <div class="container">
             <div class="row">
+                @if (session('status'))
+                <div class="col-lg-12 col-12 mt-3">
+                    <div class="alert bg-success alert-success">
+                        <div class="alert-body text-white">
+                            {{ session('status') }}
+                        </div>
+                    </div>
+                </div>
+                @endif
                 <div class="col-lg-12">
                     <div class="ltn__form-box contact-form-box  ">
                         <h4 class="title-2 text-center">¿Tiene alguna consulta?</h4>
@@ -394,7 +403,8 @@ continua</h1>
 						<div class="row">
 
 							<div class="col-lg-7">
-                        <form id="contact-form" action="mail.php" method="post">
+                        <form id="contact-form" action="{{ route('curso_contacto') }}" method="post">
+                            @csrf
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="input-item input-item-name ">

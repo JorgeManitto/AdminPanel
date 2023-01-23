@@ -19,12 +19,13 @@ return new class extends Migration
             $table->string('titulo')->nullable();
             $table->string('disertante')->nullable();
             $table->string('duracion')->nullable();
+            $table->string('fecha')->nullable();
             $table->string('url_info')->nullable();
             $table->string('valor_ars')->nullable();
             $table->string('valor_usd')->nullable();
             $table->string('estado')->nullable();
 
-            $table->string('temario')->nullable();
+            $table->text('temario')->nullable();
 
             $table->timestamps();
         });

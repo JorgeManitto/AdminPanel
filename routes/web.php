@@ -25,6 +25,9 @@ Route::post('logout', [AdminController::class,'logout']);
 
 Route::get('/', [FrontController::class,'index'])->name('index');
 Route::get('/formacion', [FrontController::class,'formacion'])->name('formacion');
+Route::get('/formacion/formulario/{id}', [FrontController::class,'formulario'])->name('formulario');
+Route::post('/formacion/formulario/', [FrontController::class,'post_formulario'])->name('post_formulario');
+Route::post('/contacto', [FrontController::class,'contacto'])->name('curso_contacto');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin', Dashboard::class)->name('dashboard');

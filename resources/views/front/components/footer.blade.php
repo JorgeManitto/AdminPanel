@@ -9,7 +9,7 @@
                         <div class="footer-widget footer-about-widget">
                             <div class="footer-logo">
                                 <div class="site-logo">
-                                    <img src="img/nuevas/logo-pie.png" alt="Logo">
+                                    <img src="{{ asset('img/nuevas/logo-pie.png') }}" alt="Logo">
                                 </div>
                             </div>
                         </div>

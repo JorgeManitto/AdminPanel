@@ -13,6 +13,7 @@ class Curso extends Model
         ,'titulo'
         ,'disertante'
         ,'duracion'
+        ,'fecha'
         ,'url_info'
         ,'valor_ars'
         ,'valor_usd'
