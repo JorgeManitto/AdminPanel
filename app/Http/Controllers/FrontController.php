@@ -42,41 +42,37 @@ class FrontController extends Controller
 
             $to = $request->email;
             $subject = $request->titulo;
-            $curso = ['titulo' => $request->titulo,'url_info' => $request->info];
+
+            $url_info= str_replace('public/', '', $request->url_info);
+            $url_info = asset('storage/'.$url_info);
+
+            $curso = ['titulo' => $request->titulo,'url_info' => $url_info];
 
             Mail::send('emails.email-cursos', $curso, function ($message) use ($to, $subject) {
                 $message->to($to)->subject($subject);
             });
 
-            $registro = new Registro;
-
-            $registro->nombre   = $request->name;
-            $registro->apellido = $request->apellido;
-            $registro->pais     = $request->pais;
-            $registro->curso    = $request->titulo;
-            $registro->empresa  = $request->empresa;
-            $registro->email    = $request->email;
-            $registro->telefono = $request->phone;
-            $registro->mensaje  = $request->message;
-
-            $registro->save();
+            $this->registrado($request);
             return redirect()->back()->with('status', 'Muchas gracias por su SOLICITUD. A la brevedad será contactado por ELEVAR');
 
         }else if($request->categoria == 3){
             $email = $this->webinars($request->titulo);
 
-
             $to = $request->email;
             $subject = $request->titulo;
-            $curso = ['titulo' => $request->titulo,'url_info' => $request->info];
+
+            $url_info = "";
+
+            $curso = ['titulo' => $request->titulo,'url_info' => $url_info];
 
             Mail::send($email, $curso, function ($message) use ($to, $subject) {
                 $message->to($to)->subject($subject);
             });
+            $this->registrado($request);
             return redirect()->back()->with('status', 'Muchas gracias por su SOLICITUD. A la brevedad será contactado por ELEVAR');
         }else if($request->categoria == 4){
 
-            $to = 'elevar@creandowebya.com';
+            $to = 'lauradelissi@elevar.com.ar';
             $subject = $request->titulo;
             $curso = ['titulo' => $request->titulo,'mensaje' => $request->message];
 
@@ -87,9 +83,10 @@ class FrontController extends Controller
         }
 
     }
+
     public function contacto(Request $request)
     {
-        $to = 'elevar@creandowebya.com';
+        $to = 'lauradelissi@elevar.com.ar';
         $subject = $request->asunto.' - '. $request->name;
         $curso = ['titulo' => $request->asunto,'mensaje' => $request->message, 'nombre' => $request->name];
 
@@ -97,6 +94,30 @@ class FrontController extends Controller
             $message->to($to)->subject($subject);
         });
         return redirect('/#con')->with('status', 'Muchas gracias por su SOLICITUD. A la brevedad será contactado por ELEVAR');
+    }
+
+    public function registrado($request)
+    {
+        $registro = new Registro;
+
+        $registro->nombre   = $request->name;
+        $registro->apellido = $request->apellido;
+        $registro->pais     = $request->pais;
+        $registro->curso    = $request->titulo;
+        $registro->empresa  = $request->empresa;
+        $registro->email    = $request->email;
+        $registro->telefono = $request->phone;
+        $registro->mensaje  = $request->message;
+
+        $registro->save();
+
+        $to = 'lauradelissi@elevar.com.ar';
+        $subject = $request->name . ' ' . $request->apellido .' se ha registrado.';
+        $curso = ['nombre' => $request->name . ' ' . $request->apellido,'titulo' => $request->titulo];
+
+        Mail::send('emails.registrar-email', $curso, function ($message) use ($to, $subject) {
+            $message->to($to)->subject($subject);
+        });
     }
     public function webinars($titulo)
     {

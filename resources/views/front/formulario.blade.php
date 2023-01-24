@@ -76,43 +76,43 @@
                                     <input type="hidden" value="{{!empty($curso->url_info) ? $curso->url_info :''}}" name="url_info">
                                     <div class="input-item input-item-name">
 										<label>Nombre</label>
-                                        <input type="text" name="name">
+                                        <input required type="text" name="name">
                                     </div>
                                 </div>
 								 <div class="col-md-6">
                                     <div class="input-item input-item-name">
 										<label>Apellido</label>
-                                        <input type="text" name="apellido">
+                                        <input required type="text" name="apellido">
                                     </div>
                                 </div>
 								<div class="col-md-6">
                                     <div class="input-item input-item-name">
 										<label>País</label>
-                                        <input type="text" name="pais">
+                                        <input required type="text" name="pais">
                                     </div>
                                 </div>
 								 <div class="col-md-6">
                                     <div class="input-item input-item-name">
 										<label>Empresa</label>
-                                        <input type="text" name="empresa">
+                                        <input required type="text" name="empresa">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="input-item input-item-email ">
 										<label>Email</label>
-                                        <input type="email" name="email" placeholder="Su email">
+                                        <input required type="email" name="email" placeholder="Su email">
                                     </div>
                                 </div>
 								 <div class="col-md-6">
                                     <div class="input-item input-item-phone ">
 										<label>Teléfono</label>
-                                        <input type="text" name="phone" placeholder="Escriba su número de teléfono">
+                                        <input required type="text" name="phone" placeholder="Escriba su número de teléfono">
                                     </div>
                                 </div>
                             </div>
                             <div class="input-item input-item-textarea ">
 								<label>{{!empty($curso->titulo) ? '¿En que otros temas te gustraia formarte?' :' Dejanos tu consulta'}}</label>
-                                <textarea name="message" ></textarea>
+                                <textarea maxlength="250" name="message" ></textarea>
                             </div>
 
                             <div class="btn-wrapper mt-0">

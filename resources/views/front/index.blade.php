@@ -409,31 +409,31 @@ continua</h1>
                                 <div class="col-md-12">
                                     <div class="input-item input-item-name ">
 										<label class="mb-0">Nombre y apellido</label>
-                                        <input type="text" name="name" >
+                                        <input required type="text" name="name" >
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="input-item input-item-email">
 										<label class="mb-0">Correo electrónico</label>
-                                        <input type="email" name="email" >
+                                        <input required type="email" name="email" >
                                     </div>
                                 </div>
 								<div class="col-md-12">
                                     <div class="input-item input-item-empresa">
 										<label class="mb-0">Empresa</label>
-                                        <input type="text" name="empresa" >
+                                        <input required type="text" name="empresa" >
                                     </div>
                                 </div>
 								 <div class="col-md-12">
                                     <div class="input-item input-item-phone">
 										<label class="mb-0">Teléfono</label>
-                                        <input type="text" name="phone" >
+                                        <input required type="text" name="phone" >
                                     </div>
                                 </div>
 								 <div class="col-md-12">
                                     <div class="input-item input-item-asunto">
 										<label class="mb-0">Asunto</label>
-                                        <input type="text" name="asunto" >
+                                        <input required type="text" name="asunto" >
                                     </div>
                                 </div>
 
@@ -441,7 +441,7 @@ continua</h1>
                             </div>
                             <div class="input-item input-item-textarea">
 								<label class="mb-0">Mensaje</label>
-                                <textarea name="message"></textarea>
+                                <textarea name="message" required maxlength="500"></textarea>
                             </div>
                             <div class="btn-wrapper mt-0">
                                 <button class="btn theme-btn-1 btn-effect-1 text-uppercase btnhdrmp" type="submit" style="background-color: #E94E1B; color: #fff">Enviar consulta</button>
