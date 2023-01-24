@@ -29,6 +29,8 @@ Route::get('/formacion/formulario/{id}', [FrontController::class,'formulario'])-
 Route::post('/formacion/formulario/', [FrontController::class,'post_formulario'])->name('post_formulario');
 Route::post('/contacto', [FrontController::class,'contacto'])->name('curso_contacto');
 
+Route::get('/download/pdf/{file}',[FrontController::class,'download'])->name('download');
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin', Dashboard::class)->name('dashboard');
     Route::get('/admin/cursos', Cursos::class)->name('cursos');

@@ -162,4 +162,10 @@ class FrontController extends Controller
             break;
         }
     }
+    public function download($file){
+
+        $file_path = public_path('storage/pdf/'.$file);
+
+        return response()->download( $file_path);
+    }
 }

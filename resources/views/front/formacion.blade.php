@@ -189,10 +189,10 @@
 				  </div>
 				  <div class="col-lg-3 bgasinw {{$key % 2 == 0  ? '' : 'bgseparador'}} bro text-center">
                     @php
-                        $url_info= str_replace('public/', '', $curso->url_info);
-                        $url_info = asset('storage/'.$url_info);
+                        $url_info= str_replace('public/pdf/', '', $curso->url_info);
+                        // $url_info = asset('storage/'.$url_info);
                     @endphp
-					  <p class="ptab"><a href="{{$url_info}}" target="_blank" class="atab">Descargar información </a></p>
+					  <p class="ptab"><a href="{{ route('download',$url_info) }}" target="_blank" class="atab">Descargar información </a></p>
 				      <p class="ptabn"><a href="{{ route('formulario', ['id'=>$curso->id]) }}" class="atab">REGISTRARSE</a></p>
 				  </div>
 
@@ -246,10 +246,10 @@
 				  <div class="col-lg-2 bgasin {{$key % 2 == 0  ? '' : 'bgseparador'}}  br text-center">{{$curso->duracion}}</div>
 				  <div class="col-lg-3 bgasin {{$key % 2 == 0  ? '' : 'bgseparador'}} br text-center">
                     @php
-                        $url_info= str_replace('public/', '', $curso->url_info);
-                        $url_info = asset('storage/'.$url_info);
+                        $url_info= str_replace('public/pdf/', '', $curso->url_info);
+                        // $url_info = asset('storage/'.$url_info);
                     @endphp
-					  <p class="ptab"><a href="{{$url_info}}" target="_blank" class="atab">Descargar información </a></p>
+					  <p class="ptab"><a href="{{ route('download',$url_info) }}" target="_blank" class="atab">Descargar información </a></p>
 				      <p class="ptabn"><a href="{{ route('formulario', ['id'=>$curso->id]) }}" class="atab">REGISTRARSE</a></p>
 				  </div>
 				  <div class="col-lg-3 bgasin {{$key % 2 == 0  ? '' : 'bgseparador'}} text-center">
