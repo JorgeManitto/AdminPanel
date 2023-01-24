@@ -4,9 +4,11 @@ namespace App\Http\Livewire;
 
 use App\Models\Contacto as ModelsContacto;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Contacto extends Component
 {
+    use WithPagination;
     public $searchTitle;
     public $alertTitle;
 

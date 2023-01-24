@@ -4,9 +4,11 @@ namespace App\Http\Livewire;
 
 use App\Models\Registro as ModelsRegistro;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Registro extends Component
 {
+    use WithPagination;
     public $alertTitle;
 
     public $registro;
@@ -33,7 +35,8 @@ class Registro extends Component
         ->when($this->searchCurso,function($query){
             $query->where('curso',$this->searchCurso);
         })
-        ->orderBy('id','desc')->paginate(10);
+        ->orderBy('id','desc')->paginate(10)->withPath('/admin/registro');
+
 
         $cursos = [
             '1' => 'Cursos online en vivo',

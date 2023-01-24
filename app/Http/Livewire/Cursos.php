@@ -52,7 +52,7 @@ class Cursos extends Component
         ->when($this->searchStatus,function($query){
             $query->where('estado',$this->searchStatus);
         })
-        ->orderBy('id','desc')->paginate(10);
+        ->orderBy('id','desc')->paginate(10)->withPath('/admin/cursos');
         return view('livewire.cursos',compact('cursos'));
     }
 

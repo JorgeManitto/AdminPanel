@@ -86,12 +86,12 @@
                             <h4 class="footer-title">Servicios</h4>
                             <div class="footer-menu">
                                 <ul>
-                                    <li><a href="formacion.html"><i class="fa fa-chevron-right" aria-hidden="true" style="color: #E94E1B; margin-right: 10px"></i>Formación profesional</a></li>
-                                    <li><a href="asistencia.html"><i class="fa fa-chevron-right" aria-hidden="true" style="color: #E94E1B; margin-right: 10px"></i>Asistencia técnica</a></li>
-                                    <li><a href="implementación.html"><i class="fa fa-chevron-right" aria-hidden="true" style="color: #E94E1B; margin-right: 10px"></i>Implementación normativa</a></li>
-                                    <li><a href="auditorias.html"><i class="fa fa-chevron-right" aria-hidden="true" style="color: #E94E1B; margin-right: 10px"></i>Auditorías internas</a></li>
-                                    <li><a href="acreditacion.html"><i class="fa fa-chevron-right" aria-hidden="true" style="color: #E94E1B; margin-right: 10px"></i>Acreditación ISO/IEC 17025</a></li>
-                                    <li><a href="gestion.html"><i class="fa fa-chevron-right" aria-hidden="true" style="color: #E94E1B; margin-right: 10px"></i>Servicios de gestión</a></li>
+                                    <li><a href="{{ route('formacion') }}"><i class="fa fa-chevron-right" aria-hidden="true" style="color: #E94E1B; margin-right: 10px"></i>Formación profesional</a></li>
+                                    <li><a href="{{ route('asistencia') }}"><i class="fa fa-chevron-right" aria-hidden="true" style="color: #E94E1B; margin-right: 10px"></i>Asistencia técnica</a></li>
+                                    <li><a href="{{ route('implementacion') }}"><i class="fa fa-chevron-right" aria-hidden="true" style="color: #E94E1B; margin-right: 10px"></i>Implementación normativa</a></li>
+                                    <li><a href="{{ route('auditorias') }}"><i class="fa fa-chevron-right" aria-hidden="true" style="color: #E94E1B; margin-right: 10px"></i>Auditorías internas</a></li>
+                                    <li><a href="{{ route('acreditacion') }}"><i class="fa fa-chevron-right" aria-hidden="true" style="color: #E94E1B; margin-right: 10px"></i>Acreditación ISO/IEC 17025</a></li>
+                                    <li><a href="{{ route('gestion') }}"><i class="fa fa-chevron-right" aria-hidden="true" style="color: #E94E1B; margin-right: 10px"></i>Servicios de gestión</a></li>
                                 </ul>
                             </div>
                         </div>

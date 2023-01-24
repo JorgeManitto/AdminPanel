@@ -29,6 +29,16 @@ Route::get('/formacion/formulario/{id}', [FrontController::class,'formulario'])-
 Route::post('/formacion/formulario/', [FrontController::class,'post_formulario'])->name('post_formulario');
 Route::post('/contacto', [FrontController::class,'contacto'])->name('curso_contacto');
 
+Route::get('/asistencia', function(){
+    return view('front.components.asistencia');
+});
+
+Route::get('/implementacion', function(){ return view('front.components.implementacion');})->name('implementacion');
+Route::get('/asistencia', function(){ return view('front.components.asistencia');})->name('asistencia');
+Route::get('/auditorias', function(){ return view('front.components.auditorias');})->name('auditorias');
+Route::get('/acreditacion', function(){ return view('front.components.acreditacion');})->name('acreditacion');
+Route::get('/gestion', function(){ return view('front.components.gestion');})->name('gestion');
+
 Route::get('/download/pdf/{file}',[FrontController::class,'download'])->name('download');
 
 Route::middleware(['auth'])->group(function () {

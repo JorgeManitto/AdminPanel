@@ -7,9 +7,11 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Usuario extends Component
 {
+    use WithPagination;
     public $alertTitle;
     public $searchTitle;
 
@@ -25,7 +27,7 @@ class Usuario extends Component
         $usuarios = User::query()
         ->when($this->searchTitle,function($query){
             $query->where('name','like','%'.$this->searchTitle.'%');
-        })->orderBy('id','desc')->paginate(10);
+        })->orderBy('id','desc')->paginate(10)->withPath('/admin/usuario');
         return view('livewire.usuario',compact('usuarios'));
     }
     public function edit(User $user)
