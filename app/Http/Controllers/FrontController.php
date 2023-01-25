@@ -77,7 +77,7 @@ class FrontController extends Controller
             return redirect()->back()->with('status', 'Muchas gracias por su SOLICITUD. A la brevedad será contactado por ELEVAR');
         }else if($request->categoria == 4){
 
-            $to = 'jorgemanitto@hotmail.com';
+            $to = 'lauradelissi@elevar.com.ar';
             $subject = $request->titulo;
             $curso = ['titulo' => $request->titulo,'mensaje' => $request->message];
 
@@ -91,7 +91,7 @@ class FrontController extends Controller
 
     public function contacto(Request $request)
     {
-        $to = 'jorgemanitto@hotmail.com';
+        $to = 'lauradelissi@elevar.com.ar';
         $subject = $request->asunto.' - '. $request->name;
         $data = ['titulo' => $request->asunto,'mensaje' => $request->message, 'nombre' => $request->name,'email' => $request->email];
 
@@ -126,7 +126,7 @@ class FrontController extends Controller
 
         $registro->save();
 
-        $to = 'jorgemanitto@hotmail.com';
+        $to = 'lauradelissi@elevar.com.ar';
         $subject = $request->name . ' ' . $request->apellido .' se ha registrado.';
         $curso = ['nombre' => $request->name . ' ' . $request->apellido,'titulo' => $request->titulo];
 
