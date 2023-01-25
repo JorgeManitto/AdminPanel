@@ -10,8 +10,25 @@
                 <div class="col-lg-10">
                     {{-- <h3>Listado De Usuarios</h3> --}}
                 </div>
+                <div class="col-lg-2 col-12 mb-2">
+                    <button style="float: right;width: 100%;" type="button" class="btn btn-success" wire:click="create()">
+                        Crear Usuario
+                    </button>
+                </div>
             </div>
             <div class="row" >
+                {{-- Delete --}}
+                <div class="col-12" id="alert_create" style="display: none;">
+                    <div class="alert alert-success d-flex alert-dismissible" role="alert">
+                        <span class="badge badge-center rounded-pill bg-success border-label-success p-3 me-2"><i class="bx bx-command fs-6"></i></span>
+                        <div class="d-flex flex-column ps-1">
+                          <h6 class="alert-heading d-flex align-items-center fw-bold mb-1">{{$alertTitle}}</h6>
+                          <span>¡Ha sido creado!</span>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                      </div>
+                </div>
                 {{-- Delete --}}
                 <div class="col-12" id="alert_delete" style="display: none;">
                     <div class="alert alert-danger d-flex alert-dismissible" role="alert">
@@ -82,7 +99,7 @@
     </div>
     @include('livewire.components.delete-usuario')
     @include('livewire.components.edit-usuario')
-    {{-- @include('livewire.components.edit-usuario') --}}
+    @include('livewire.components.create-usuario')
     <style>
         .pagination li  a, .pagination li span{
             margin-left: 1rem;
@@ -97,7 +114,10 @@
     </style>
 
     <script>
-         window.addEventListener('alertupdate', event => {
+         window.addEventListener('alertcreate', event => {
+          document.getElementById('alert_create').style.display = "block";
+        })
+        window.addEventListener('alertupdate', event => {
           document.getElementById('alert_update').style.display = "block";
         })
 

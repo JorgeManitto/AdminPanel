@@ -30,13 +30,18 @@ class Usuario extends Component
         })->orderBy('id','desc')->paginate(10)->withPath('/admin/usuario');
         return view('livewire.usuario',compact('usuarios'));
     }
+    public function create()
+    {
+        $this->reset('name','email','password','user');
+        $this->dispatchBrowserEvent('create');
+    }
     public function edit(User $user)
     {
         $this->user = $user;
 
         $this->name     = $user->name;
         $this->email    = $user->email;
-        $this->password = $user->password;
+        $this->password = '';
 
         $this->dispatchBrowserEvent('edit');
     }
@@ -49,7 +54,7 @@ class Usuario extends Component
     public function delete(User $user)
     {
         User::destroy($this->user->id);
-       $this->alertTitle = $user->name;
+       $this->alertTitle = $this->user->name;
        $this->dispatchBrowserEvent('alertdelete');
        $this->dispatchBrowserEvent('close_delete');
        $this->render();
@@ -61,18 +66,19 @@ class Usuario extends Component
         $params = [
             'name'      => $this->name,
             'email'     => $this->email,
-            'password'  => $this->password,
         ];
         $validator = Validator::make($params, [
             'email' => Rule::unique('users')->ignore($this->user->id),
-            'password' => 'required'
+            // 'password' => 'required'
         ], [
             'email.required' => 'El campo de correo electrónico es obligatorio.',
             'email.unique' => 'El mail ya ha sido registrado.',
             'password.required' => 'El campo de contraseña es obligatorio.'
         ]);
 
-        $params['password'] = Hash::make($this->password);
+        if($this->password){
+            $params['password'] = Hash::make($this->password);
+        }
         if ($validator->fails()) {
             $this->dispatchBrowserEvent('close_edit');
 
@@ -95,4 +101,43 @@ class Usuario extends Component
         $this->reset('name','email','password');
     }
 
+    public function save()
+    {
+        $params = [
+            'name'      => $this->name,
+            'email'     => $this->email,
+            'password'     => $this->password,
+        ];
+        $validator = Validator::make($params, [
+            'email' => Rule::unique('users'),
+            'password' => 'required'
+        ], [
+            'email.required' => 'El campo de correo electrónico es obligatorio.',
+            'email.unique' => 'El mail ya ha sido registrado.',
+            'password.required' => 'El campo de contraseña es obligatorio.'
+        ]);
+        if($this->password){
+            $params['password'] = Hash::make($this->password);
+        }
+
+        if ($validator->fails()) {
+            $this->dispatchBrowserEvent('close_create');
+
+            $this->alertTitle = $validator->errors()->first();
+            $this->dispatchBrowserEvent('alertdelete');
+            $this->reset('name','email','password');
+            $this->error = true;
+            return;
+        }else{
+            $this->error = false;
+        }
+
+        $cursos = User::create($params);
+
+        $this->dispatchBrowserEvent('close_create');
+
+        $this->alertTitle = $this->name;
+        $this->dispatchBrowserEvent('alertcreate');
+        $this->reset('name','email','password');
+    }
 }
