@@ -243,7 +243,10 @@
 				  <div class="col-lg-4 bgasin  {{$key % 2 == 0  ? '' : 'bgseparador'}} br"><p class="pagos mb-0 text-uppercase"><strong>{{$curso->titulo}}</strong></p>
 					  <p class="mt-20">Disertante: {{$curso->disertante}}</p>
 				  </div>
-				  <div class="col-lg-2 bgasin {{$key % 2 == 0  ? '' : 'bgseparador'}}  br text-center">{{$curso->duracion}}</div>
+				    <div class="col-lg-2 bgasin {{$key % 2 == 0  ? '' : 'bgseparador'}}  br text-center">
+                    <p>{{$curso->duracion}}</p>
+                    <p><strong>{{$curso->fecha}}</strong></p>
+                    </div>
 				  <div class="col-lg-3 bgasin {{$key % 2 == 0  ? '' : 'bgseparador'}} br text-center">
                     @php
                         $url_info= str_replace('public/pdf/', '', $curso->url_info);

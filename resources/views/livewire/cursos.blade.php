@@ -1,18 +1,31 @@
 <div class="layout-page">
 
+    @include('admin.components.nav-responsive')
+
+    @include('admin.components.nav-bar')
+
     <!-- Content wrapper -->
     <div class="content-wrapper">
         <!-- Content -->
         <div class="container-xxl flex-grow-1 container-p-y">
             <div class="row mb-3 float-right">
-                <div class="col-lg-10">
-                    <h3>Listado De Cursos</h3>
+                <div class="col-lg-6">
+                    {{-- <h3>Listado De Cursos</h3> --}}
                 </div>
-                <div class="col-lg-2" >
-                    {{-- @livewire('curso-modal') --}}
-                    <button style="float: right;" type="button" class="btn btn-primary" wire:click="create()">
-                        Crear Curso
-                      </button>
+                <div class="col-lg-2 col-12 mb-2">
+                    <button style="float: right;width: 100%;" type="button" class="btn btn-success" wire:click="create_envivo()">
+                        Crear Curso Online En Vivo
+                    </button>
+                </div>
+                <div class="col-lg-2 col-12 mb-2">
+                    <button style="float: right;width: 100%;" type="button" class="btn btn-danger" wire:click="create_asincro()">
+                        Crear Curso Asincrónico
+                    </button>
+                </div>
+                <div class="col-lg-2 col-12 mb-2">
+                    <button style="float: right;width: 100%;" type="button" class="btn btn-primary" wire:click="create_webinar()">
+                        Crear Curso Webinar
+                    </button>
                 </div>
             </div>
 
@@ -66,7 +79,8 @@
                             <option value="1">Pendiente</option>
                             <option value="2">Publicado</option>
                         </select>
-                        <button type="submit" class="btn btn-outline-primary">Buscar</button>
+                        <button type="submit" class="btn btn-outline-primary d-none d-lg-block">Buscar</button>
+                        <button type="submit" class="btn btn-primary mt-1 w-100 d-block d-lg-none">Buscar</button>
 
                     </div>
                 </form>
@@ -89,8 +103,8 @@
                           <td>
                             <div class="flex" style="text-align: right;">
                                 {{-- @livewire('edit-curso-modal', ['curso' => $curso], key($curso->id)) --}}
-                                <button class="btn btn-outline-warning" wire:click="edit({{$curso->id}})">Editar</button>
-                                <button class="btn btn-outline-danger" wire:click="delete_modal({{$curso->id}})"
+                                <button class="btn btn-outline-warning mb-1 w-100" wire:click="edit({{$curso->id}})">Editar</button>
+                                <button class="btn btn-outline-danger w-100" wire:click="delete_modal({{$curso->id}})"
                                 type="button" >Eliminar</button>
                             </div>
                           </td>
@@ -133,6 +147,8 @@
         })
         </script>
     @include('livewire.edit-curso-modal')
-    @include('livewire.curso-modal')
+    @include('livewire.components.envivo-modal')
+    @include('livewire.components.asincro-modal')
+    @include('livewire.components.webinar-modal')
     @include('livewire.delete-curso-modal')
 </div>

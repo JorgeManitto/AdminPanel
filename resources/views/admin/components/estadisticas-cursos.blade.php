@@ -1,5 +1,5 @@
 <!-- Order Statistics -->
-<div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
+<div class="col-md-6 col-lg-6 col-xl-6 order-0 mb-4">
     <div class="card h-100">
       <div class="card-header d-flex align-items-center justify-content-between pb-0">
         <div class="card-title mb-0">

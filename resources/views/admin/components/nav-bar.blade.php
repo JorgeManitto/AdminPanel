@@ -9,7 +9,28 @@ id="layout-navbar"
   <!-- Search -->
   <div class="navbar-nav align-items-center">
     <div class="nav-item d-flex align-items-center">
-        <h3 style="margin-top: 0;margin-bottom: 0;" class="navbar-nav-right d-flex align-items-center">Dashboard</h3>
+        @php
+            $route = request()->path();
+            $url = '';
+            switch ($route) {
+                case 'admin/cursos':
+                    $url = 'Listado De Cursos';
+                    break;
+                case 'admin/registro':
+                    $url = 'Listado De Registros';
+                    break;
+                case 'admin/contacto':
+                    $url = 'Listado De Contactos';
+                    break;
+                case 'admin/usuario':
+                    $url = 'Listado De Usuarios';
+                    break;
+                default:
+                    $url = 'Administración';
+                    break;
+            }
+        @endphp
+        <h3 style="margin-top: 0;margin-bottom: 0;" class="navbar-nav-right d-flex align-items-center">{{$url}}</h3>
     </div>
   </div>
   <!-- /Search -->
@@ -44,15 +65,7 @@ id="layout-navbar"
         <li>
           <div class="dropdown-divider"></div>
         </li>
-        <li>
-          <a class="dropdown-item" href="#">
-            <i class="bx bx-user me-2"></i>
-            <span class="align-middle">Mi Perfil</span>
-          </a>
-        </li>
-        <li>
-          <div class="dropdown-divider"></div>
-        </li>
+
         <li>
           <a class="dropdown-item">
             <i class="bx bx-power-off me-2"></i>

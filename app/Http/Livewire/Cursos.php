@@ -25,17 +25,18 @@ class Cursos extends Component
     public $titulo;
     public $categoria;
     public $duracion;
+    public $fecha;
     public $url_info;
     public $valor_ars;
     public $valor_usd;
     public $estado;
     public $temario;
     public $disertante;
-
-    protected $listeners = ['render' => 'render'];
+    public $url_meet;
 
     public function updatingSearchTitle()
     {
+
         $this->resetPage();
     }
     public function updatingSearchStatus()
@@ -52,32 +53,52 @@ class Cursos extends Component
         ->when($this->searchStatus,function($query){
             $query->where('estado',$this->searchStatus);
         })
-        ->orderBy('id','desc')->paginate(10)->withPath('/admin/cursos');
+        ->orderBy('id','desc')->paginate(25)
+         ->withPath('/admin/cursos');
         return view('livewire.cursos',compact('cursos'));
     }
 
-    public function create()
+    public function create_envivo()
     {
-        $this->reset('titulo','categoria','duracion','url_info','valor_ars','valor_usd','estado','temario','disertante');
-        $this->dispatchBrowserEvent('create');
+        $this->resets_vars();
+        $this->categoria = '1';
+
+        $this->dispatchBrowserEvent('create_envivo');
+    }
+    public function create_asincro()
+    {
+        $this->resets_vars();
+        $this->categoria = '2';
+
+        $this->dispatchBrowserEvent('create_asincro');
+    }
+
+    public function create_webinar()
+    {
+        $this->resets_vars();
+        $this->categoria = '3';
+
+        $this->dispatchBrowserEvent('create_webinar');
     }
 
     public function save()
     {
         $this->validate([
-            'titulo'    => 'required', // 1MB Max
+            'titulo'    => 'required',
             'url_info'  => 'max:100024',
         ]);
 
         $params = [
             'categoria'     => $this->categoria ?? 1,
             'titulo'        => $this->titulo,
+            'disertante'    => $this->disertante,
             'duracion'      => $this->duracion,
+            'fecha'         => $this->fecha,
+            'url_meet'      => $this->url_meet,
             'valor_ars'     => $this->valor_ars,
             'valor_usd'     => $this->valor_usd,
             'estado'        => $this->estado ?? 1,
             'temario'       => $this->temario,
-            'disertante'    => $this->disertante,
         ];
 
         if($this->url_info){
@@ -86,7 +107,8 @@ class Cursos extends Component
         }
 
         $cursos = Curso::create($params);
-        $this->dispatchBrowserEvent('close_create');
+        $this->close_modals();
+
         $this->dispatchBrowserEvent('alertcreate');
         $this->alertTitle = $this->titulo;
         $this->reset('titulo','categoria','duracion','url_info','valor_ars','valor_usd','estado','temario','disertante');
@@ -101,7 +123,9 @@ class Cursos extends Component
         $this->titulo       = $curso->titulo;
         $this->categoria    = $curso->categoria;
         $this->duracion     = $curso->duracion;
+        $this->fecha        = $curso->fecha;
         $this->url_info     = $curso->url_info;
+        $this->url_meet     = $curso->url_meet;
         $this->valor_ars    = $curso->valor_ars;
         $this->valor_usd    = $curso->valor_usd;
         $this->estado       = $curso->estado;
@@ -132,6 +156,8 @@ class Cursos extends Component
             'categoria' => $this->categoria,
             'titulo'    => $this->titulo,
             'duracion'  => $this->duracion,
+            'fecha'     => $this->fecha,
+            'url_meet'  => $this->url_meet,
             'valor_ars' => $this->valor_ars,
             'valor_usd' => $this->valor_usd,
             'estado'    => $this->estado,
@@ -152,11 +178,20 @@ class Cursos extends Component
         $this->alertTitle = $this->titulo;
         $this->dispatchBrowserEvent('alertupdate');
         $this->reset('titulo','categoria','duracion','url_info','valor_ars','valor_usd','estado','temario','disertante');
-        $this->resetPage();
+        // $this->resetPage();
     }
     public function alertcreate()
     {
         $this->dispatchBrowserEvent('alertcreate');
     }
-
+    public function resets_vars()
+    {
+        $this->reset('titulo','categoria','fecha','duracion','url_info','valor_ars','valor_usd','estado','temario','url_meet','disertante');
+    }
+    public function close_modals()
+    {
+        $this->dispatchBrowserEvent('close_envivo');
+        $this->dispatchBrowserEvent('close_asincro');
+        $this->dispatchBrowserEvent('close_webinar');
+    }
 }

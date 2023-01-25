@@ -74,6 +74,7 @@
                                     <input type="hidden" value="{{!empty($curso->titulo) ? $curso->titulo :'Cursos privados'}}" name="titulo">
                                     <input type="hidden" value="{{!empty($curso->categoria) ? $curso->categoria :'4'}}" name="categoria">
                                     <input type="hidden" value="{{!empty($curso->url_info) ? $curso->url_info :''}}" name="url_info">
+                                    <input type="hidden" value="{{!empty($curso->id) ? $curso->id :''}}" name="id">
                                     <div class="input-item input-item-name">
 										<label>Nombre</label>
                                         <input required type="text" name="name">
@@ -112,7 +113,7 @@
                             </div>
                             <div class="input-item input-item-textarea ">
 								<label>{{!empty($curso->titulo) ? '¿En que otros temas te gustraia formarte?' :' Dejanos tu consulta'}}</label>
-                                <textarea maxlength="250" name="message" ></textarea>
+                                <textarea maxlength="500" name="message" ></textarea>
                             </div>
 
                             <div class="btn-wrapper mt-0">

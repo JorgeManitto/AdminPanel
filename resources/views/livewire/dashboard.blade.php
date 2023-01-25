@@ -1,6 +1,8 @@
 
         <!-- Layout container -->
         <div class="layout-page">
+            @include('admin.components.nav-responsive')
+
             @include('admin.components.nav-bar')
 
             <!-- Content wrapper -->
@@ -8,10 +10,10 @@
               <!-- Content -->
               <div class="container-xxl flex-grow-1 container-p-y">
                 <div class="row">
-                  <div class="col-lg-4 col-md-4 order-1">
+                  <div class="col-lg-6 col-md-4 order-1">
                     <div class="row">
                       @include('admin.components.chart-widget-cursos')
-
+                      @include('admin.components.chart-widget-registros')
                     </div>
                   </div>
 
@@ -22,9 +24,10 @@
                 </div>
                 <div class="row">
 
-                  @include('admin.components.estadisticas-cursos')
+                  {{-- @include('admin.components.estadisticas-cursos') --}}
 
 
+                  @include('admin.components.ultimos-cursos')
                   @include('admin.components.transacciones-cursos')
                 </div>
               </div>

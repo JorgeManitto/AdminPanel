@@ -8,10 +8,13 @@
 </head>
 <body style="margin-left: 1rem;">
     <h2>
-        {{$titulo}}
+        {{$titulo}} - {{$nombre}}
     </h2>
     <p>
-        {{$mensaje}} - {{$nombre}}
+     Mensaje: {{$mensaje}} - {{$nombre}}
+    </p>
+    <p>
+        email: {{$email}}
     </p>
     <p style="margin-top:5rem;">
         <img src="{{ asset('img/logo.png') }}" alt="elevar">

@@ -1,12 +1,15 @@
 <div class="layout-page">
 
+    @include('admin.components.nav-responsive')
+    @include('admin.components.nav-bar')
+
     <!-- Content wrapper -->
     <div class="content-wrapper">
         <!-- Content -->
         <div class="container-xxl flex-grow-1 container-p-y">
             <div class="row mb-3 float-right">
                 <div class="col-lg-10">
-                    <h3>Listado De Registros</h3>
+                    {{-- <h3>Listado De Registros</h3> --}}
                 </div>
             </div>
             <div class="row" >
@@ -34,7 +37,8 @@
                             <option value="1">Curso 1</option>
                             <option value="2">Curso 2</option>
                         </select>
-                        <button type="submit" class="btn btn-outline-primary">Buscar</button>
+                        <button type="submit" class="btn btn-outline-primary d-none d-lg-block">Buscar</button>
+                        <button type="submit" class="btn btn-primary mt-1 w-100 d-block d-lg-none">Buscar</button>
                     </div>
                 </form>
                 <div class="table-responsive">

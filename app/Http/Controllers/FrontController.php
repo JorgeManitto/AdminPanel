@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contacto;
 use App\Models\Curso;
 use App\Models\Registro;
 use Illuminate\Http\Request;
@@ -56,23 +57,27 @@ class FrontController extends Controller
             return redirect()->back()->with('status', 'Muchas gracias por su SOLICITUD. A la brevedad será contactado por ELEVAR');
 
         }else if($request->categoria == 3){
-            $email = $this->webinars($request->titulo);
+
+            // $email = $this->webinars($request->titulo);
+            $curso = Curso::find($request->id);
 
             $to = $request->email;
-            $subject = $request->titulo;
+            $subject = $curso->titulo;
 
-            $url_info = "";
+            $fecha  = $curso->fecha;
+            $hora   = $curso->duracion;
+            $url_meet = $curso->url_meet;
 
-            $curso = ['titulo' => $request->titulo,'url_info' => $url_info];
+            $data = ['titulo' => $request->titulo,'hora' => $hora,'fecha' => $fecha,'url_meet' => $url_meet];
 
-            Mail::send($email, $curso, function ($message) use ($to, $subject) {
+            Mail::send('emails.webinars.webinar', $data, function ($message) use ($to, $subject) {
                 $message->to($to)->subject($subject);
             });
             $this->registrado($request);
             return redirect()->back()->with('status', 'Muchas gracias por su SOLICITUD. A la brevedad será contactado por ELEVAR');
         }else if($request->categoria == 4){
 
-            $to = 'lauradelissi@elevar.com.ar';
+            $to = 'jorgemanitto@hotmail.com';
             $subject = $request->titulo;
             $curso = ['titulo' => $request->titulo,'mensaje' => $request->message];
 
@@ -86,13 +91,23 @@ class FrontController extends Controller
 
     public function contacto(Request $request)
     {
-        $to = 'lauradelissi@elevar.com.ar';
+        $to = 'jorgemanitto@hotmail.com';
         $subject = $request->asunto.' - '. $request->name;
-        $curso = ['titulo' => $request->asunto,'mensaje' => $request->message, 'nombre' => $request->name];
+        $data = ['titulo' => $request->asunto,'mensaje' => $request->message, 'nombre' => $request->name,'email' => $request->email];
 
-        Mail::send('emails.contacto', $curso, function ($message) use ($to, $subject) {
+        Mail::send('emails.contacto', $data, function ($message) use ($to, $subject) {
             $message->to($to)->subject($subject);
         });
+        $contacto = new Contacto;
+
+        $contacto->nombre_apellido  = $request->name;
+        $contacto->email            = $request->email;
+        $contacto->empresa          = $request->empresa;
+        $contacto->telefono         = $request->phone;
+        $contacto->asunto           = $request->asunto;
+        $contacto->mensaje          = $request->message;
+
+        $contacto->save();
         return redirect('/#con')->with('status', 'Muchas gracias por su SOLICITUD. A la brevedad será contactado por ELEVAR');
     }
 
@@ -111,7 +126,7 @@ class FrontController extends Controller
 
         $registro->save();
 
-        $to = 'lauradelissi@elevar.com.ar';
+        $to = 'jorgemanitto@hotmail.com';
         $subject = $request->name . ' ' . $request->apellido .' se ha registrado.';
         $curso = ['nombre' => $request->name . ' ' . $request->apellido,'titulo' => $request->titulo];
 

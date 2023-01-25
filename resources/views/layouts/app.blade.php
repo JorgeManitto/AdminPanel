@@ -91,7 +91,7 @@
             <li class="menu-item {{$route == 'admin' ? 'active' : ''}}">
               <a href="/admin" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Dashboard</div>
+                <div data-i18n="Analytics">Administración</div>
               </a>
             </li>
 

@@ -15,6 +15,7 @@ class Curso extends Model
         ,'duracion'
         ,'fecha'
         ,'url_info'
+        ,'url_meet'
         ,'valor_ars'
         ,'valor_usd'
         ,'estado'

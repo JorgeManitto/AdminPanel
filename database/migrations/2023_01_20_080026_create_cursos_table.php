@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('duracion')->nullable();
             $table->string('fecha')->nullable();
             $table->string('url_info')->nullable();
+            $table->string('url_meet')->nullable();
             $table->string('valor_ars')->nullable();
             $table->string('valor_usd')->nullable();
             $table->string('estado')->nullable();

@@ -1,12 +1,14 @@
 <div class="layout-page">
 
+    @include('admin.components.nav-responsive')
+    @include('admin.components.nav-bar')
     <!-- Content wrapper -->
     <div class="content-wrapper">
         <!-- Content -->
         <div class="container-xxl flex-grow-1 container-p-y">
             <div class="row mb-3 float-right">
                 <div class="col-lg-10">
-                    <h3>Listado De Usuarios</h3>
+                    {{-- <h3>Listado De Usuarios</h3> --}}
                 </div>
             </div>
             <div class="row" >
@@ -41,7 +43,8 @@
                 <form wire:submit.prevent="render">
                     <div class="input-group mb-3">
                         <input wire:model.defer="searchTitle" type="text" class="form-control w-75" placeholder="Buscar por Nombre y Apellido">
-                        <button type="submit" class="btn btn-outline-primary">Buscar</button>
+                        <button type="submit" class="btn btn-outline-primary d-none d-lg-block">Buscar</button>
+                        <button type="submit" class="btn btn-primary mt-1 w-100 d-block d-lg-none">Buscar</button>
                     </div>
                 </form>
                 <div class="table-responsive">
