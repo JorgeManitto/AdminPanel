@@ -32,11 +32,6 @@
                 <form wire:submit.prevent="render">
                     <div class="input-group mb-3">
                         <input wire:model.defer="searchTitle" type="text" class="form-control w-75" placeholder="Buscar por Nombre y Apellido">
-                        <select class="form-control" wire:model.defer="searchCurso">
-                            <option value="">Todos los Cursos</option>
-                            <option value="1">Curso 1</option>
-                            <option value="2">Curso 2</option>
-                        </select>
                         <button type="submit" class="btn btn-outline-primary d-none d-lg-block">Buscar</button>
                         <button type="submit" class="btn btn-primary mt-1 w-100 d-block d-lg-none">Buscar</button>
                     </div>
@@ -56,17 +51,13 @@
                         <tr>
                           <td class="w-50"><strong>{{$registro->nombre}} {{$registro->apellido}}</strong></td>
                             <td>
-                            @foreach ($cursos as $key => $curso)
-                                @if ($key == $registro->curso)
-                                {{$curso}}
-                                @endif
-                            @endforeach
+                                {{$registro->curso}}
                             </td>
                           <td>{{$registro->empresa}}<td>
                           <td>
                             <div class="flex" style="text-align: right;">
-                                <button class="btn btn-outline-success" wire:click="show({{$registro->id}})">Ver</button>
-                                <button class="btn btn-outline-danger" wire:click="delete_modal({{$registro->id}})"
+                                <button class="btn btn-outline-success mb-1 w-100" wire:click="show({{$registro->id}})">Ver</button>
+                                <button class="btn btn-outline-danger mb-1 w-100" wire:click="delete_modal({{$registro->id}})"
                                 type="button" >Eliminar</button>
                             </div>
                           </td>

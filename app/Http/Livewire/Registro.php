@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Registro as ModelsRegistro;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -13,7 +14,6 @@ class Registro extends Component
 
     public $registro;
     public $searchTitle;
-    public $searchCurso;
 
     public $nombre;
     public $apellido;
@@ -29,11 +29,7 @@ class Registro extends Component
     {
         $registros = ModelsRegistro::query()
         ->when($this->searchTitle,function($query){
-            $query->where('nombre','like','%'.$this->searchTitle.'%');
-            $query->Orwhere('apellido','like','%'.$this->searchTitle.'%');
-        })
-        ->when($this->searchCurso,function($query){
-            $query->where('curso',$this->searchCurso);
+            $query->where(DB::raw("CONCAT(nombre, ' ', apellido)"), 'like', '%'.$this->searchTitle.'%');
         })
         ->orderBy('id','desc')->paginate(10)->withPath('/admin/registro');
 

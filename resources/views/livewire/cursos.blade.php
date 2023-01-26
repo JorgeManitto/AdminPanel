@@ -89,7 +89,7 @@
                       <thead>
                         <tr>
                           <th>Curso</th>
-                          <th>Disnoseque</th>
+                          <th>Disertante</th>
                           <th>Estado</th>
                           <th></th>
                         </tr>

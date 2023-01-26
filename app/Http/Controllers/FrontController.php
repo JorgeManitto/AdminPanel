@@ -23,9 +23,9 @@ class FrontController extends Controller
 
     public function formacion()
     {
-        $cursos_1 = Curso::where('categoria',1)->get();
-        $cursos_2 = Curso::where('categoria',2)->get();
-        $cursos_3 = Curso::where('categoria',3)->get();
+        $cursos_1 = Curso::where('categoria',1)->where('estado',2)->get();
+        $cursos_2 = Curso::where('categoria',2)->where('estado',2)->get();
+        $cursos_3 = Curso::where('categoria',3)->where('estado',2)->get();
 
         return view('front.formacion',compact('cursos_1','cursos_2','cursos_3'));
     }
